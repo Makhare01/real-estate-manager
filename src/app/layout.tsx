@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import logo from "@/assets/images/logo.png";
 import Image from "next/image";
+import Link from "next/link";
 
 import "../styles/globals.css";
 
@@ -29,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${FiraGO.variable} antialiased flex flex-col items-center`}
       >
-        <div className="container py-8 px-5">
-          <Image src={logo} alt="logo" />
+        <div className="container py-8 px-5 flex">
+          <Link href="/">
+            <Image src={logo} alt="logo" />
+          </Link>
         </div>
 
         <hr className="w-full" />
