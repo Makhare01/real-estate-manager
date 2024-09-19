@@ -6,7 +6,7 @@ export const AddListingButton = () => {
   return (
     <div>
       <Link href="/add-listing">
-        <Button>
+        <Button className="h-[47px] w-[230px]">
           <IconPlus />
           ლისტინგის დამატება
         </Button>
