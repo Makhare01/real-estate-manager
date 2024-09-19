@@ -6,10 +6,10 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-start justify-between gap-5">
       <ListingFilters />
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 flex-wrap justify-end flex-1">
         <AddListingButton />
         <AddAgentButton />
       </div>

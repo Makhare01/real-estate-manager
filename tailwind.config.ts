@@ -54,6 +54,14 @@ const config: Config = {
           500: "#F93B1D",
           600: "#c92f17",
         },
+        "blue-charcoal": {
+          700: "#2D3648",
+          800: "#021526",
+          900: "#354451",
+        },
+        apple: {
+          800: "#45A849",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
