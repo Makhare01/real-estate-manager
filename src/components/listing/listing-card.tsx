@@ -4,7 +4,13 @@ import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 
 const RealEstateBadge = ({ is_rental }: { is_rental: boolean }) => {
-  return <div className="p-1 px-2 bg"></div>;
+  return (
+    <div className="p-2 px-3 bg-blue-charcoal-800/50 absolute left-4 top-4 rounded-[15px]">
+      <p className="text-xs font-semibold text-white">
+        {is_rental ? "ქირავდება" : "იყიდება"}
+      </p>
+    </div>
+  );
 };
 
 type Props = {
@@ -14,6 +20,7 @@ type Props = {
 export const ListingCard = ({ realEstate }: Props) => {
   return (
     <div className="w-full max-w-[370px] rounded-[14px] bg-white border border-alto-300 relative cursor-pointer hover:shadow-[5px_5px_12px_0px_#02152614] transition delay-75">
+      <RealEstateBadge is_rental={Boolean(realEstate.is_rental)} />
       <Image
         src={realEstate.image}
         alt={"image" + realEstate.id.toString()}
