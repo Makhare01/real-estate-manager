@@ -62,11 +62,24 @@ const config: Config = {
         apple: {
           800: "#45A849",
         },
+        alto: {
+          300: "#DBDBDB",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      container: {
+        center: true,
+        screens: {
+          sm: "600px",
+          md: "728px",
+          lg: "984px",
+          xl: "1240px",
+          "2xl": "1596px",
+        },
       },
     },
   },

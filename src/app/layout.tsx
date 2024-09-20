@@ -27,18 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${FiraGO.variable} antialiased flex flex-col items-center`}
-      >
-        <div className="container py-8 px-5 flex">
-          <Link href="/">
-            <Image src={logo} alt="logo" />
-          </Link>
+      <body className={`${FiraGO.variable} antialiased`}>
+        <div className="w-full sticky top-0 bg-white z-10">
+          <div className="container py-8 px-5 flex">
+            <Link href="/">
+              <Image src={logo} alt="logo" />
+            </Link>
+          </div>
+
+          <hr className="w-full" />
         </div>
 
-        <hr className="w-full" />
-
-        <div className="container pt-10 px-5">{children}</div>
+        <div className="container py-10 px-5">{children}</div>
       </body>
     </html>
   );
