@@ -53,8 +53,6 @@ export const AreaFilter = () => {
     resolver: zodResolver(TAreaFilterSchema),
   });
 
-  console.log({ minArea, maxArea });
-
   return (
     <FilterDropdownWrapper
       filterName="ფართობი"

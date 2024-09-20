@@ -1,3 +1,4 @@
+import { RealEstatesList } from "@/components/listing";
 import { ListingFilters } from "@/components/listing-filters";
 import {
   AddAgentButton,
@@ -6,13 +7,17 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex items-start justify-between gap-5">
-      <ListingFilters />
+    <div>
+      <div className="flex items-start justify-between gap-5">
+        <ListingFilters />
 
-      <div className="flex gap-3 flex-wrap justify-end flex-1">
-        <AddListingButton />
-        <AddAgentButton />
+        <div className="flex gap-3 flex-wrap justify-end flex-1">
+          <AddListingButton />
+          <AddAgentButton />
+        </div>
       </div>
+
+      <RealEstatesList />
     </div>
   );
 }
