@@ -1,4 +1,6 @@
-import { RealEstate } from "@/api/listing";
+"use server";
+
+import { getRealEstates, RealEstate } from "@/api/listing";
 import { ListingCard } from "./listing-card";
 
 const REAL_ESTATES: Array<RealEstate> = [
@@ -130,10 +132,56 @@ const REAL_ESTATES: Array<RealEstate> = [
   },
 ];
 
-export const RealEstatesList = () => {
+type Props = {
+  regions: Array<number>;
+  minPrice?: number;
+  maxPrice?: number;
+  minArea?: number;
+  maxArea?: number;
+  bedrooms?: number;
+};
+
+export const RealEstatesList = async ({
+  regions,
+  minPrice,
+  maxPrice,
+  maxArea,
+  minArea,
+  bedrooms,
+}: Props) => {
+  const realEstates = await getRealEstates();
+
+  let filteredItems = realEstates;
+
+  if (regions) {
+    filteredItems = filteredItems.filter((item) =>
+      regions.includes(item.city.region_id)
+    );
+  }
+
+  if (maxPrice) {
+    filteredItems = filteredItems.filter((item) => item.price <= maxPrice);
+  }
+
+  if (minPrice) {
+    filteredItems = filteredItems.filter((item) => item.price >= minPrice);
+  }
+
+  if (maxArea) {
+    filteredItems = filteredItems.filter((item) => item.area >= maxArea);
+  }
+
+  if (minArea) {
+    filteredItems = filteredItems.filter((item) => item.area >= minArea);
+  }
+
+  if (minArea) {
+    filteredItems = filteredItems.filter((item) => item.bedrooms === bedrooms);
+  }
+
   return (
     <div className="flex items-start justify-between flex-wrap mt-5 gap-5">
-      {REAL_ESTATES.map((realEstate) => (
+      {filteredItems.map((realEstate) => (
         <ListingCard key={realEstate.id} realEstate={realEstate} />
       ))}
     </div>

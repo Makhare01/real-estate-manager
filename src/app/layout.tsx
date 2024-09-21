@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import logo from "@/assets/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Toaster } from "react-hot-toast";
 
 import "../styles/globals.css";
 
@@ -26,6 +27,8 @@ export const metadata: Metadata = {
   description: "Real estate manager dashboard",
 };
 
+export const fetchCache = "force-no-store";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,7 +48,7 @@ export default function RootLayout({
 
           <hr className="w-full" />
         </div>
-
+        <Toaster position="bottom-center" />
         <div className="container py-10 px-5">{children}</div>
       </body>
     </html>

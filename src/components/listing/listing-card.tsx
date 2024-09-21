@@ -1,7 +1,10 @@
+"use client";
+
 import { RealEstate } from "@/api/listing";
 import { IconArea, IconBed, IconLocation, IconZipCode } from "@/assets/icons";
 import { cn, formatCurrency } from "@/lib/utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const RealEstateBadge = ({
   is_rental,
@@ -29,8 +32,15 @@ type Props = {
 };
 
 export const ListingCard = ({ realEstate }: Props) => {
+  const router = useRouter();
+
   return (
-    <div className="w-full max-w-[370px] rounded-[14px] bg-white border border-alto-300 relative cursor-pointer hover:shadow-[5px_5px_12px_0px_#02152614] transition delay-75">
+    <div
+      className="w-full max-w-[370px] rounded-[14px] bg-white border border-alto-300 relative cursor-pointer hover:shadow-[5px_5px_12px_0px_#02152614] transition delay-75"
+      onClick={() => {
+        router.push(`/real-estate/${realEstate.id}`);
+      }}
+    >
       <RealEstateBadge is_rental={Boolean(realEstate.is_rental)} />
       <Image
         src={realEstate.image}

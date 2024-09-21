@@ -3,12 +3,18 @@
 import { useBoolean } from "@/lib/hooks";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { TAGS } from "@/lib/constants";
+import { deleteListing } from "@/api/listing";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 type Props = {
   listingId: number;
 };
 
 export const DeleteListingDialog = ({ listingId }: Props) => {
+  const router = useRouter();
   const isOpen = useBoolean();
 
   return (
@@ -28,7 +34,22 @@ export const DeleteListingDialog = ({ listingId }: Props) => {
 
         <div className="flex items-center gap-5 justify-center mt-3">
           <Button variant="destructive">გაუქმება</Button>
-          <Button>დადასტურება</Button>
+          <Button
+            onClick={async () => {
+              try {
+                await deleteListing({ estateId: String(listingId) });
+
+                isOpen.setFalse();
+                toast.success("ლისტინგი წაიშალა");
+                router.push("/");
+                await revalidatePath("/");
+              } catch (e) {
+                toast.error("ლისტინგის წაშლა ვერ მოხერხდა");
+              }
+            }}
+          >
+            დადასტურება
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
