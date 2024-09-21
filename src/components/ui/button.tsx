@@ -12,14 +12,15 @@ const buttonVariants = cva(
         default:
           "bg-pomegranate-500 text-primary-foreground hover:bg-pomegranate-600",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-transparent text-pomegranate-500 border border-pomegranate-500 hover:text-white hover:bg-pomegranate-500",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-oslo-gray-800 bg-background text-oslo-gray-800 hover:bg-oslo-gray-500 hover:text-white hover:border-oslo-gray-500",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
+      // border border-oslo-gray-800 bg-background text-oslo-gray-800 hover:bg-oslo-gray-500 hover:text-white hover:border-oslo-gray-500
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",

@@ -1,11 +1,22 @@
 import { RealEstate } from "@/api/listing";
 import { IconArea, IconBed, IconLocation, IconZipCode } from "@/assets/icons";
-import { formatCurrency } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 
-const RealEstateBadge = ({ is_rental }: { is_rental: boolean }) => {
+export const RealEstateBadge = ({
+  is_rental,
+  className,
+}: {
+  is_rental: boolean;
+  className?: string;
+}) => {
   return (
-    <div className="p-2 px-3 bg-blue-charcoal-800/50 absolute left-4 top-4 rounded-[15px]">
+    <div
+      className={cn(
+        "p-2 px-3 bg-blue-charcoal-800/50 absolute left-4 top-4 rounded-[15px]",
+        className
+      )}
+    >
       <p className="text-xs font-semibold text-white">
         {is_rental ? "ქირავდება" : "იყიდება"}
       </p>

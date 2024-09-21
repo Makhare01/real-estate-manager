@@ -6,3 +6,5 @@ export { IconLocation } from "./location";
 export { IconBed } from "./bed";
 export { IconArea } from "./area";
 export { IconZipCode } from "./zip-code";
+export { IconEmail } from "./email";
+export { IconPhone } from "./phone";

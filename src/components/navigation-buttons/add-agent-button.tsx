@@ -6,7 +6,7 @@ export const AddAgentButton = () => {
   return (
     <div>
       <Link href="/add-agent">
-        <Button variant="outline" className="h-[47px] w-[230px]">
+        <Button variant="destructive" className="h-[47px] w-[230px]">
           <IconPlus />
           აგენტის დამატება
         </Button>
