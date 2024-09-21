@@ -26,3 +26,26 @@ export const TRealEstate = z.object({
 });
 
 export type RealEstate = z.infer<typeof TRealEstate>;
+
+const TAgent = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  surname: z.string(),
+  email: z.string().email(),
+  avatar: z.string(),
+  phone: z.string(),
+});
+
+export type Agent = z.infer<typeof TAgent>;
+
+export const TRealEstateDetails = z.intersection(
+  TRealEstate,
+  z.object({
+    description: z.string(),
+    agent_id: z.number().int(),
+    agent: TAgent,
+    created_at: z.string(),
+  })
+);
+
+export type RealEstateDetails = z.infer<typeof TRealEstateDetails>;

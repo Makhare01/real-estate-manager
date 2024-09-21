@@ -65,6 +65,10 @@ const config: Config = {
         alto: {
           300: "#DBDBDB",
         },
+        "oslo-gray": {
+          500: "#808A93",
+          800: "#676E76",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
