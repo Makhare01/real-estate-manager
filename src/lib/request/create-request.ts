@@ -13,6 +13,7 @@ export type RequestType = "json" | "file";
 
 type RequestInput<Path extends string> = {
   headers?: Headers;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body?: Record<string, any>;
   params?: Record<ParamParseKey<Path>, string>;
   query?: URLSearchParams;
@@ -25,6 +26,7 @@ export const createRequest = <Path extends string>(
   method: RequestMethods,
   url: Path
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return async <T extends z.ZodSchema<any, any>>(
     input: RequestInput<Path>,
     schema?: T
