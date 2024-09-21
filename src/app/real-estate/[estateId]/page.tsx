@@ -42,6 +42,7 @@ const realEstate = {
 
 const RealEstateDetails = ({ params }: { params: { estateId: string } }) => {
   console.log({ params });
+
   return (
     <div className="w-full flex gap-10">
       <div className="w-full max-w-[50%] relative">

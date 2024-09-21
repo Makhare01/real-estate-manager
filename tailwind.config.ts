@@ -69,6 +69,7 @@ const config: Config = {
           500: "#808A93",
           800: "#676E76",
         },
+        shark: "#1A1A1F",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -85,6 +86,9 @@ const config: Config = {
           "2xl": "1596px",
         },
       },
+    },
+    fontFamily: {
+      helvetica: ["Helvetica", "sans-serif"],
     },
   },
   plugins: [require("tailwindcss-animate")],

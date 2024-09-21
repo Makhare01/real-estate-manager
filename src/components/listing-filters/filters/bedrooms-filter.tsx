@@ -38,16 +38,16 @@ const RoomSelectItem = ({
   );
 };
 
-export const RoomsFilter = () => {
+export const BedroomsFilter = () => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
-  const rooms = searchParams.get("rooms");
+  const bedrooms = searchParams.get("bedrooms");
 
   const [selectedRoom, setSelectedRoom] = useState<number | undefined>(
-    rooms ? Number(rooms) : undefined
+    bedrooms ? Number(bedrooms) : undefined
   );
 
   return (
@@ -56,9 +56,9 @@ export const RoomsFilter = () => {
       filterLabel="საძინებლების რაოდენობა"
       onChoose={() => {
         if (selectedRoom) {
-          params.set("rooms", String(selectedRoom));
+          params.set("bedrooms", String(selectedRoom));
         } else {
-          params.delete("rooms");
+          params.delete("bedrooms");
         }
 
         router.push(`?${params.toString()}`);

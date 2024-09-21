@@ -12,6 +12,12 @@ const FiraGO = localFont({
   weight: "100 900",
 });
 
+const HelveticaNeue = localFont({
+  src: "../assets/fonts/HelveticaNeueMedium.otf",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+
 export const metadata: Metadata = {
   title: {
     template: "Real Estate Manager",
@@ -27,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${FiraGO.variable} antialiased`}>
+      <body
+        className={`${FiraGO.variable} ${HelveticaNeue.variable} antialiased`}
+      >
         <div className="w-full sticky top-0 bg-white z-10">
           <div className="container py-8 px-5 flex">
             <Link href="/">

@@ -1,5 +1,10 @@
 import { FilterBadges } from "./filter-badges";
-import { AreaFilter, PriceFilter, RegionFilter, RoomsFilter } from "./filters";
+import {
+  AreaFilter,
+  PriceFilter,
+  RegionFilter,
+  BedroomsFilter,
+} from "./filters";
 
 export const ListingFilters = () => {
   return (
@@ -8,7 +13,7 @@ export const ListingFilters = () => {
         <RegionFilter />
         <PriceFilter />
         <AreaFilter />
-        <RoomsFilter />
+        <BedroomsFilter />
       </div>
 
       <FilterBadges />
