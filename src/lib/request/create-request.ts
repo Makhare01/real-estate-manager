@@ -20,6 +20,7 @@ type RequestInput<Path extends string> = {
   withoutAuth?: boolean;
   requestInit?: RequestInit;
   type?: RequestType;
+  mode?: RequestMode;
 };
 
 export const createRequest = <Path extends string>(
@@ -57,7 +58,10 @@ export const createRequest = <Path extends string>(
     try {
       const res = await fetch(
         input.query ? `${apiUrl}?${input.query}` : apiUrl,
-        requestInit
+        {
+          mode: input.mode ?? undefined,
+          ...requestInit,
+        }
       );
 
       if (res.status >= 500) {

@@ -63,6 +63,7 @@ export const addListing = async (body: AddListingFormValues) => {
     {
       type: "file",
       body,
+      mode: "no-cors",
     },
     TRealEstate
   );

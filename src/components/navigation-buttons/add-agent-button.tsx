@@ -8,7 +8,6 @@ import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CustomInput, MAX_FILE_SIZE } from "../add-listing-form";
-import { useRouter, useSearchParams } from "next/navigation";
 import { UploadFileInput } from "../upload-file-input";
 import { HelperText } from "../helper-text";
 import { addAgent } from "@/api/agents";
@@ -34,23 +33,6 @@ const AddAgentFormSchema = z.object({
 export type AddAgentFormValues = z.infer<typeof AddAgentFormSchema>;
 
 export const AddAgentButton = () => {
-  const router = useRouter();
-
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-
-  const onValueChange = (key: string, value: string | null) => {
-    if (value) {
-      params.set(key, value);
-    } else {
-      params.delete(key);
-    }
-
-    router.push(`?${params.toString()}`, {
-      scroll: false,
-    });
-  };
-
   const isOpen = useBoolean();
 
   const { control, handleSubmit, setError, clearErrors } =
@@ -108,7 +90,6 @@ export const AddAgentButton = () => {
                     onChange={(event) => {
                       const value = event.target.value;
                       field.onChange(value ?? null);
-                      onValueChange("name", value ?? null);
                     }}
                     error={Boolean(fieldState.error)}
                     isDirty={fieldState.isDirty}
@@ -129,7 +110,6 @@ export const AddAgentButton = () => {
                     onChange={(event) => {
                       const value = event.target.value;
                       field.onChange(value ?? null);
-                      onValueChange("surname", value ?? null);
                     }}
                     error={Boolean(fieldState.error)}
                     isDirty={fieldState.isDirty}
@@ -150,7 +130,6 @@ export const AddAgentButton = () => {
                     onChange={(event) => {
                       const value = event.target.value;
                       field.onChange(value ?? null);
-                      onValueChange("surname", value ?? null);
                     }}
                     error={Boolean(fieldState.error)}
                     isDirty={fieldState.isDirty}
@@ -172,7 +151,6 @@ export const AddAgentButton = () => {
                     onChange={(event) => {
                       const value = event.target.value;
                       field.onChange(value ?? null);
-                      onValueChange("surname", value ?? null);
                     }}
                     error={Boolean(fieldState.error)}
                     isDirty={fieldState.isDirty}
