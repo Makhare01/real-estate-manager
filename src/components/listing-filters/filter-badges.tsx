@@ -65,7 +65,7 @@ export const FilterBadges = () => {
   const minArea = params.get("minArea");
   const maxArea = params.get("maxArea");
 
-  const rooms = params.get("rooms");
+  const bedrooms = params.get("bedrooms");
 
   return (
     <div className="flex flex-wrap items-center gap-3 p-1 mt-3">
@@ -116,11 +116,11 @@ export const FilterBadges = () => {
         />
       )}
 
-      {rooms && (
+      {bedrooms && (
         <FilterBadge
-          content={rooms}
+          content={bedrooms}
           onClick={() => {
-            params.delete("rooms", String(rooms));
+            params.delete("bedrooms", String(bedrooms));
             router.push(`?${params.toString()}`);
           }}
         />
@@ -131,7 +131,7 @@ export const FilterBadges = () => {
         maxPrice ||
         minArea ||
         maxArea ||
-        rooms) && (
+        bedrooms) && (
         <p
           className="text-sm font-medium text-blue-charcoal-800 cursor-pointer"
           onClick={() => {

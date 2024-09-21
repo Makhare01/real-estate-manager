@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Helvetica";
+  src: url("/src/assets/fonts/HelveticaNeueMedium.otf");
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

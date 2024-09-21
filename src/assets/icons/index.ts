@@ -8,3 +8,5 @@ export { IconArea } from "./area";
 export { IconZipCode } from "./zip-code";
 export { IconEmail } from "./email";
 export { IconPhone } from "./phone";
+export { IconPlusCircle } from "./plus-circle";
+export { IconTrashBin } from "./trash-bin";
