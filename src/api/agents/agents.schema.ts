@@ -1,4 +1,3 @@
-import { Tangent } from "lucide-react";
 import { z } from "zod";
 
 export const TAgent = z.object({

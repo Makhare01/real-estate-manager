@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { UploadFileInput } from "@/components/upload-file-input";
-import { generatePath } from "@/lib/generate-path";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
@@ -107,29 +106,23 @@ export const AddListingForm = ({ cities, regions, agents }: Props) => {
   const description = searchParams.get("description");
   const agent_id = searchParams.get("agent_id");
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    setError,
-    clearErrors,
-    watch,
-  } = useForm<AddListingFormValues>({
-    defaultValues: {
-      is_rental: is_rental ? Number(is_rental) : 0,
-      address: address ?? "",
-      zip_code: zip_code ? Number(zip_code) : undefined,
-      region_id: default_region_id ? Number(default_region_id) : undefined,
-      city_id: city_id ? Number(city_id) : undefined,
-      price: price ? Number(price) : undefined,
-      area: area ? Number(area) : undefined,
-      bedrooms: bedrooms ? Number(bedrooms) : undefined,
-      description: description ?? "",
-      image: undefined,
-      agent_id: agent_id ? Number(agent_id) : undefined,
-    },
-    resolver: zodResolver(TAddListingFormSchema),
-  });
+  const { control, handleSubmit, setError, clearErrors, watch } =
+    useForm<AddListingFormValues>({
+      defaultValues: {
+        is_rental: is_rental ? Number(is_rental) : 0,
+        address: address ?? "",
+        zip_code: zip_code ? Number(zip_code) : undefined,
+        region_id: default_region_id ? Number(default_region_id) : undefined,
+        city_id: city_id ? Number(city_id) : undefined,
+        price: price ? Number(price) : undefined,
+        area: area ? Number(area) : undefined,
+        bedrooms: bedrooms ? Number(bedrooms) : undefined,
+        description: description ?? "",
+        image: undefined,
+        agent_id: agent_id ? Number(agent_id) : undefined,
+      },
+      resolver: zodResolver(TAddListingFormSchema),
+    });
 
   const region_id = watch("region_id");
 
@@ -262,7 +255,7 @@ export const AddListingForm = ({ cities, regions, agents }: Props) => {
                       </SelectTrigger>
                       <SelectContent className="w-full">
                         {regions.map((region) => (
-                          <SelectItem value={String(region.id)}>
+                          <SelectItem key={region.id} value={String(region.id)}>
                             {region.name}
                           </SelectItem>
                         ))}
@@ -309,7 +302,10 @@ export const AddListingForm = ({ cities, regions, agents }: Props) => {
                         {cities
                           .filter((city) => city.region_id === region_id)
                           .map((filteredCity) => (
-                            <SelectItem value={String(filteredCity.id)}>
+                            <SelectItem
+                              key={filteredCity.id}
+                              value={String(filteredCity.id)}
+                            >
                               {filteredCity.name}
                             </SelectItem>
                           ))}
@@ -503,7 +499,7 @@ export const AddListingForm = ({ cities, regions, agents }: Props) => {
                     </SelectTrigger>
                     <SelectContent className="w-full">
                       {agents.map((agent) => (
-                        <SelectItem value={String(agent.id)}>
+                        <SelectItem key={agent.id} value={String(agent.id)}>
                           {agent.name}
                         </SelectItem>
                       ))}

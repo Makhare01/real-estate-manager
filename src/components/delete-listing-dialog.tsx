@@ -3,8 +3,7 @@
 import { useBoolean } from "@/lib/hooks";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
-import { revalidatePath, revalidateTag } from "next/cache";
-import { TAGS } from "@/lib/constants";
+import { revalidatePath } from "next/cache";
 import { deleteListing } from "@/api/listing";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";

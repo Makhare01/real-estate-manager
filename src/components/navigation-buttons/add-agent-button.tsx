@@ -53,22 +53,17 @@ export const AddAgentButton = () => {
 
   const isOpen = useBoolean();
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    setError,
-    clearErrors,
-  } = useForm<AddAgentFormValues>({
-    defaultValues: {
-      name: "",
-      surname: "",
-      email: "",
-      avatar: undefined,
-      phone: "",
-    },
-    resolver: zodResolver(AddAgentFormSchema),
-  });
+  const { control, handleSubmit, setError, clearErrors } =
+    useForm<AddAgentFormValues>({
+      defaultValues: {
+        name: "",
+        surname: "",
+        email: "",
+        avatar: undefined,
+        phone: "",
+      },
+      resolver: zodResolver(AddAgentFormSchema),
+    });
 
   return (
     <Dialog
