@@ -1,47 +1,21 @@
+"use server";
+
 import Image from "next/image";
 import { format } from "date-fns";
 import { IconArea, IconBed, IconLocation, IconZipCode } from "@/assets/icons";
 import { AgentCard } from "@/components/agent-card";
 import { RealEstateBadge } from "@/components/listing/listing-card";
 import { DeleteListingDialog } from "@/components/delete-listing-dialog";
+import { getRealEstateDetails } from "@/api/listing";
 
-const realEstate = {
-  id: 2254,
-  address: "Khelvachauri Makho",
-  image:
-    "https://api.real-estate-manager.redberryinternship.ge/storage/images/yuczXaKnc9mnvJnuAKoJinBxP81FeDfCbBWK22yW.jpg",
-  zip_code: "6010",
-  description:
-    "იყიდება ბინა ჭავჭავაძის ქუჩაზე, ვაკეში. ბინა არის ახალი რემონტით, ორი საძინებლითა და დიდი აივნებით. მოწყობილია ავეჯითა და ტექნიკით. ",
-  price: 100000,
-  bedrooms: 3,
-  area: 100.5,
-  is_rental: 1,
-  agent_id: 1773,
-  city_id: 1,
-  created_at: "2024-09-21T07:13:56.000000Z",
-  city: {
-    id: 1,
-    name: "სოხუმი",
-    region_id: 1,
-    region: {
-      id: 1,
-      name: "აფხაზეთი",
-    },
-  },
-  agent: {
-    id: 1773,
-    name: "მახარე",
-    surname: "მახარაძე",
-    email: "makhare@redberry.ge",
-    avatar:
-      "https://api.real-estate-manager.redberryinternship.ge/storage/agent_avatars/nmf3gSVrgYA30STVmx206RL4Wn8cBvUISajbQC9i.jpg",
-    phone: "555455242",
-  },
-};
-
-const RealEstateDetails = ({ params }: { params: { estateId: string } }) => {
-  console.log({ params });
+const RealEstateDetails = async ({
+  params,
+}: {
+  params: { estateId: string };
+}) => {
+  const realEstate = await getRealEstateDetails({
+    estateId: params.estateId,
+  });
 
   return (
     <div className="w-full flex gap-10">
@@ -106,7 +80,7 @@ const RealEstateDetails = ({ params }: { params: { estateId: string } }) => {
 
         <AgentCard agent={realEstate.agent} />
 
-        <DeleteListingDialog listingId={Number(5)} />
+        <DeleteListingDialog listingId={realEstate.id} />
       </div>
     </div>
   );

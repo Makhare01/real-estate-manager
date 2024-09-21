@@ -5,7 +5,11 @@ const TRegion = z.object({
   name: z.string(),
 });
 
-const TCity = z.object({
+export const TRegions = z.array(TRegion);
+
+export type Regions = z.infer<typeof TRegions>;
+
+export const TCity = z.object({
   id: z.number().int(),
   name: z.string(),
   region_id: z.number().int(),
@@ -24,6 +28,8 @@ export const TRealEstate = z.object({
   city_id: z.number().int(),
   city: TCity,
 });
+
+export const TRealEstates = z.array(TRealEstate);
 
 export type RealEstate = z.infer<typeof TRealEstate>;
 
