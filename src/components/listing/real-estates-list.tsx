@@ -24,7 +24,7 @@ export const RealEstatesList = async ({
 
   let filteredItems = realEstates;
 
-  if (regions) {
+  if (regions.length > 0) {
     filteredItems = filteredItems.filter((item) =>
       regions.includes(item.city.region_id)
     );
